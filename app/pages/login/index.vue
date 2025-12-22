@@ -21,7 +21,7 @@ const { login } = useAuth()
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   try {
     await login(event.data)
-    toast.add({ title: 'Connexion réussie', color: 'success' })
+    toast.add({ title: 'Connexion réussie !', description: 'Bienvenue sur votre dashboard', color: 'success' })
     navigateTo('/dashboard')
   } catch {
     toast.add({ title: 'Erreur de connexion', color: 'error' })
