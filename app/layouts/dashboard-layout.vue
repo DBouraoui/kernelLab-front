@@ -24,7 +24,9 @@ if (accessToken.value && !userStore.username) {
 <template>
  <UDashboardGroup>
    <SidebarAdmin/>
-   <slot/>
+    <section class="h-full w-full overflow-y-scroll">
+      <slot/>
+    </section>
  </UDashboardGroup>
 </template>
 

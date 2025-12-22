@@ -2,6 +2,7 @@
   import {useUserStore} from "~/stores/userStore";
 
   definePageMeta({
+    title: 'Pannel d\'administration',
     layout: 'dashboard-layout',
     middleware: ['auth'],
   })

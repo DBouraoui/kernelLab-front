@@ -10,7 +10,23 @@ const items: NavigationMenuItem[][] = [[{
   label: 'Home',
   icon: 'i-lucide-house',
   to: '/dashboard',
-  active: route.path.startsWith('/dashboard')
+  active: route.path.endsWith('/dashboard')
+},{
+  label: 'Mes Projets',
+  icon: "i-lucide-folder-git-2",
+  active: route.path.startsWith('/dashboard/projects'),
+  children: [
+    {
+      label: 'Ajouter un projets',
+      to: '/dashboard/projects/',
+      active: route.path.startsWith('/dashboard/projects'),
+    },
+    {
+      label: 'Modifier un projets',
+      to: '/dashboard/projects/update',
+      active: route.path.startsWith('/dashboard/projects/update'),
+    },
+  ]
 }],
   [{
   label: 'Deconnexion',

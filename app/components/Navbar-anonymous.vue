@@ -24,7 +24,7 @@ const items = computed<NavigationMenuItem[]>(() => [{
     label: 'Connexion',
     to: '/login',
     icon: 'i-lucide-user',
-    active: route.path.startsWith('/login')
+    active: route.path.startsWith('/contact')
   }
 ])
 </script>
