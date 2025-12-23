@@ -14,17 +14,15 @@ const items: NavigationMenuItem[][] = [[{
 },{
   label: 'Mes Projets',
   icon: "i-lucide-folder-git-2",
-  active: route.path.startsWith('/dashboard/projects'),
+  active: route.path.includes('/projects'),
   children: [
     {
       label: 'Ajouter un projets',
-      to: '/dashboard/projects/',
-      active: route.path.startsWith('/dashboard/projects'),
+      to: '/dashboard/projects/add',
     },
     {
       label: 'Modifier un projets',
-      to: '/dashboard/projects/update',
-      active: route.path.startsWith('/dashboard/projects/update'),
+      to: '/dashboard/projects/',
     },
   ]
 }],
@@ -33,7 +31,12 @@ const items: NavigationMenuItem[][] = [[{
   icon: 'i-lucide-log-out',
   onSelect: logout,
   to: '/login'
-}]]
+},{
+    label: 'Site web',
+    icon: 'i-lucide-globe',
+    onSelect: logout,
+    to: '/'
+  }]]
 </script>
 
 <template>

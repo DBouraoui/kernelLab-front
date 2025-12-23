@@ -8,22 +8,11 @@ const items = computed<NavigationMenuItem[]>(() => [{
   to: '/projects',
   icon: 'i-lucide-book-open',
   active: route.path.startsWith('/projects')
-}, {
-  label: 'Le blog',
-  to: '/blogs',
-  icon: 'i-lucide-box',
-  active: route.path.startsWith('/blogs')
 },
   {
     label: 'Me contacter',
     to: '/contact',
     icon: 'i-lucide-mail',
-    active: route.path.startsWith('/contact')
-  },
-  {
-    label: 'Connexion',
-    to: '/login',
-    icon: 'i-lucide-user',
     active: route.path.startsWith('/contact')
   }
 ])

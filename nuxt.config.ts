@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/ui',
     '@pinia/nuxt',
+    '@nuxtjs/mdc',
   ],
     css: ['./app/assets/css/main.css'],
     vite: {

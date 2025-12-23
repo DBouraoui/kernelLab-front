@@ -7,16 +7,16 @@ const accessToken = useCookie('access_token')
 const config = useRuntimeConfig()
 const toast = useToast()
 
-if (accessToken.value && !userStore.username) {
+if (accessToken.value && !userStore.email) {
   try {
-    const data: {username: string, email: string} = await $fetch(`${config.public.apiBase}/user/me/`, {
+    const data: {email: string} = await $fetch(`${config.public.apiBase}/api/me`, {
       headers: { Authorization: `Bearer ${accessToken.value}` }
     })
     userStore.setUser(data)
   } catch {
     accessToken.value = null
-    toast.add({title:'Vous n\'êtes plus connecté', color:'warning'})
     navigateTo('/login')
+    toast.add({title:'Vous n\'êtes plus connecté', color:'warning'})
   }
 }
 </script>

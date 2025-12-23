@@ -2,18 +2,18 @@ export const useAuth = () => {
     const accessToken = useCookie('access_token')
     const toast = useToast();
 
-    const login = async (payload: { username: string; password: string }) => {
+    const login = async (payload: { email: string; password: string }) => {
         const config = useRuntimeConfig()
 
-        const data = await $fetch<{ access: string; refresh: string }>(
-            `${config.public.apiBase}/api/auth/login/`,
+        const data = await $fetch<{ token: string }>(
+            `${config.public.apiBase}/api/login_check`,
             {
                 method: 'POST',
                 body: payload
             }
         )
 
-        accessToken.value = data.access
+        accessToken.value = data.token
         return data
     }
 

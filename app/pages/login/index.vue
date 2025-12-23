@@ -4,14 +4,14 @@ import type { FormSubmitEvent } from '@nuxt/ui'
 import {useAuth} from "~/hooks/useAuth";
 
 const schema = z.object({
-  username: z.string('Nom de compte invalide'),
+  email: z.email('Email invalide'),
   password: z.string('Le mot de passe est requis').min(8, 'Le mot de passe doit être >= 8 caractères'),
 })
 
 type Schema = z.output<typeof schema>
 
 const state = reactive<Partial<Schema>>({
-  username: undefined,
+  email: undefined,
   password: undefined
 })
 
@@ -45,9 +45,9 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 
       <UForm :schema="schema" :state="state" class="space-y-6" @submit="onSubmit">
 
-        <UFormField label="Nom de compte" name="username" size="xl">
+        <UFormField label="Nom de compte" name="email" size="xl">
           <UInput
-              v-model="state.username"
+              v-model="state.email"
               class="w-full"
               placeholder="nom de compte"
               icon="i-heroicons-envelope"
