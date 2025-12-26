@@ -6,7 +6,7 @@ const openImage = ref(false);
 
 const { data: projects, pending, error } = await useAsyncData<Project[]>(
     'projects-list',
-    () => $fetch(`${config.public.apiBase}/api/projects?limit=10`)
+    (_nuxtApp, { signal }) => $fetch(`${config.public.apiBase}/api/projects?limit=10`, {signal})
 );
 
 const getImageUrl = (path: string) => {

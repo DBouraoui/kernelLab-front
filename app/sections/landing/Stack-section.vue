@@ -5,7 +5,7 @@ const techCategories = [{
   color: 'blue',
   technologies: [
     { name: 'Symfony', icon: 'i-simple-icons-symfony', description: 'Framework PHP robuste pour applications enterprise' },
-    { name: 'Django', icon: 'i-simple-icons-django', description: 'Python web framework avec batteries incluses' },
+    { name: 'Fiber', icon: 'i-simple-icons-go', description: 'Golang framework robust, scalable et ultra performant' },
     { name: 'FastAPI', icon: 'i-simple-icons-fastapi', description: 'API moderne et performante en Python' }
   ]
 }, {

@@ -25,7 +25,13 @@ const items: NavigationMenuItem[][] = [[{
       to: '/dashboard/projects/',
     },
   ]
-}],
+},
+  {
+    label: 'Mes contacts',
+    icon: 'i-lucide-message',
+    to: '/dashboard/contacts',
+    active: route.path.includes('/contacts')
+  },],
   [{
   label: 'Deconnexion',
   icon: 'i-lucide-log-out',
@@ -42,7 +48,7 @@ const items: NavigationMenuItem[][] = [[{
 <template>
 <UDashboardSidebar collapsible resizable :ui="{ footer: 'border-t border-default' }">
   <template #header>
-    <h2>PyPulse</h2>
+    <h2>KernelLab</h2>
   </template>
 
   <template #default="{ collapsed }">

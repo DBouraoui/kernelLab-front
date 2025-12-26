@@ -21,7 +21,7 @@ const items = computed<NavigationMenuItem[]>(() => [{
 <template>
   <UHeader mode="slideover">
     <template #title>
-      <h2>Pypulse</h2>
+      <h2>KernelLab</h2>
     </template>
 
     <UNavigationMenu :items="items" />

@@ -6,30 +6,22 @@ definePageMeta({
   layout: "dashboard-layout",
   middleware: ["auth"],
 })
-const projectStore = useProjectStore()
-const projects = ref<Project[]>([])
-const loading = ref<boolean>(false)
 const config = useRuntimeConfig()
+const projectStore = useProjectStore()
 
-onMounted(async () => {
-  try {
-    loading.value = true
-    await projectStore.fetchProjects()
-    projects.value = projectStore.projects
-  } catch (err) {
-    console.error(err)
-  }finally {
-    loading.value = false
-  }
-})
+const { data: projects, pending, error } = await useAsyncData<Project[]>(
+        'projects-list-admin',
+        () => $fetch(`${config.public.apiBase}/api/projects?limit=10`)
+);
+
 const toast = useToast()
 const router = useRouter()
 
 async function confirmDelete(id :string) {
   try {
-    projectStore.deleteProject(id)
+    await  projectStore.deleteProject(id)
     toast.add({ title: 'Supprimé', description: 'Le projet a été retiré.', color: 'success' })
-    router.push('/dashboard/projects')
+    await router.push('/dashboard/projects')
   } catch (err) {
     console.log(err)
     toast.add({ title: 'Erreur', description: 'Suppression impossible', color: 'error' })
@@ -49,18 +41,25 @@ async function confirmDelete(id :string) {
       </UButton>
     </header>
 
-    <div v-if="loading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <UCard v-for="i in 9" :key="i" class="overflow-hidden">
-        <USkeleton class="h-48 w-full" />
-        <div class="p-4 space-y-2">
-          <USkeleton class="h-4 w-[250px]" />
-          <USkeleton class="h-4 w-[200px]" />
-        </div>
-      </UCard>
+    <div v-if="pending">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <USkeleton v-for="i in 6" :key="i" class="h-80 rounded-xl" />
+      </div>
     </div>
 
-    <section v-else>
-      <div v-if="projects.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Erreur avec UAlert -->
+    <UAlert
+        v-else-if="error"
+        icon="i-heroicons-exclamation-triangle"
+        color="error"
+        variant="soft"
+        title="Erreur de chargement"
+        description="Impossible de récupérer les projets. Veuillez réessayer."
+        class="mb-6"
+    />
+
+
+    <div v-else-if=" projects && projects.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <UCard
             v-for="p in projects"
             :key="p.id"
@@ -114,6 +113,5 @@ async function confirmDelete(id :string) {
         <p class="text-gray-500 text-lg">Aucun projet trouvé pour le moment.</p>
         <UButton to="/dashboard/projects/add" variant="link">Créer ton premier projet</UButton>
       </UCard>
-    </section>
   </UContainer>
 </template>

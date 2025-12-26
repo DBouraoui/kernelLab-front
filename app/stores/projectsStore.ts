@@ -118,13 +118,9 @@ export const useProjectStore = defineStore('projects', {
                     },
                 })
 
-                this.projects = this.projects.filter(project => project.id !== id && project.id.toString() !== id.toString())
+                refreshNuxtData("projects-list-admin")
 
-                if (this.currentProject?.id === id) {
-                    this.currentProject = null
-                }
-
-                return true // Pour confirmer au composant que c'est ok
+                return true
             } catch (err: any) {
                 console.error('Erreur suppression store:', err)
                 throw err
