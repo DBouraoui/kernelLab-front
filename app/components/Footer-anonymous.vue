@@ -35,12 +35,12 @@ const footerLinks = [
           <div class="flex items-center gap-2 mb-4">
             <UIcon name="i-heroicons-bolt" class="w-8 h-8 text-primary" />
             <span class="text-xl font-bold text-gray-900 dark:text-white uppercase tracking-wider">
-              PyPulse
+              KernelLab
             </span>
           </div>
           <p class="text-sm text-gray-500 dark:text-gray-400 max-w-sm leading-relaxed">
-            La solution moderne pour gérer vos projets avec Nuxt 4 et Nuxt UI.
-            Simplifiez votre workflow et gagnez en productivité dès aujourd'hui.
+            Développeur FullStack & SaaS
+            Symfony, Go, DevOps
           </p>
         </div>
 

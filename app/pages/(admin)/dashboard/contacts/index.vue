@@ -1,23 +1,11 @@
 <script setup lang="ts">
 import { h, resolveComponent } from 'vue'
 import type { TableColumn } from '@nuxt/ui'
+import type {ContactType} from "~/interface/contact";
 
 const UBadge = resolveComponent('UBadge')
 const UButton = resolveComponent('UButton')
 
-type ContactType = {
-  id: number
-  firstname?: string
-  lastname?: string
-  company?: string
-  email: string
-  phone?: string
-  link?: string
-  subject: string
-  description: string
-  pro?: boolean
-  budget?: string | null
-}
 
 definePageMeta({
   title: 'Mes contacts',

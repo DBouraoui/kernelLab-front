@@ -49,7 +49,7 @@ const links = [{
         <!-- H1 -->
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-center text-gray-900 dark:text-white mb-6">
           Développeur FullStack & SaaS<br />
-          <span class="text-primary">Symfony, Django, DevOps</span>
+          <span class="text-primary">Symfony, Go, DevOps</span>
         </h1>
 
         <!-- Sous-titre -->
